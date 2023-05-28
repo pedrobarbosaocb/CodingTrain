@@ -1,5 +1,5 @@
 let shots;
-let div_360 = [1, 2,3, 4, 5, 6, 8, 9, 10, 12, 15, 18, 20, 24, 30, 36, 40, 45, 60, 72, 90, 120, 180, 360];
+let div_360 = [1,2,3,4,5,6,8,9,10,12,15,16,18,20,24,25,30,36,40,45,48,50,60,72,75,80,90,100,120,144,150,180,200,225,240,300,360,400,450,600,720,900,1200,1800,3600];
 let index;
 
 class Particle {
@@ -13,28 +13,22 @@ class Particle {
     }
 
     update(x, y) {
-        this
-            .pos
-            .set(x, y);
+        this.pos.set(x, y);
     }
 
     changeRays(inc) {
         index -= inc;
         this.rays = [];
-        if (index >= div_360.length) {
-            index = 0
-        } else if (index < 0) {
+        if (index < 0) {
             index = div_360.length - 1
         }
-        shots = div_360[index];
+        shots = div_360[index]/10;
         this.shoot();
     }
 
     shoot() {
         for (let a = 0; a < 360; a += shots) {
-            this
-                .rays
-                .push(new Ray(this.pos, radians(a)));
+            this.rays.push(new Ray(this.pos, radians(a)));
         }
     }
 
