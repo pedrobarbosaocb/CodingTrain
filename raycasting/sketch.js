@@ -4,7 +4,7 @@ let ray;
 let particle;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(512, 512);
     n_walls = 5;
     newWalls();
     ray = new Ray(100, 200);
